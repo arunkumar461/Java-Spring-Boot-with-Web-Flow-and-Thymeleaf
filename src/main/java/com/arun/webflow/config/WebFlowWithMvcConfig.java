@@ -22,84 +22,85 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @Configuration
 public class WebFlowWithMvcConfig extends AbstractFlowConfiguration {
 
-  @Autowired private LocalValidatorFactoryBean localValidatorFactoryBean;
+    @Autowired
+    private LocalValidatorFactoryBean localValidatorFactoryBean;
 
-  @Bean
-  public FlowDefinitionRegistry flowRegistry() {
-    return getFlowDefinitionRegistryBuilder() //
-        .setBasePath("classpath:flows") //
-        .addFlowLocationPattern("/**/*-flow.xml") //
-        .setFlowBuilderServices(this.flowBuilderServices()) //
-        .build();
-  }
+    @Bean
+    public FlowDefinitionRegistry flowRegistry() {
+        return getFlowDefinitionRegistryBuilder() //
+                .setBasePath("classpath:flows") //
+                .addFlowLocationPattern("/**/*-flow.xml") //
+                .setFlowBuilderServices(this.flowBuilderServices()) //
+                .build();
+    }
 
-  @Bean
-  public FlowExecutor flowExecutor() {
-    return getFlowExecutorBuilder(this.flowRegistry()) //
-        .build();
-  }
+    @Bean
+    public FlowExecutor flowExecutor() {
+        return getFlowExecutorBuilder(this.flowRegistry()) //
+                .build();
+    }
 
-  @Bean
-  public FlowBuilderServices flowBuilderServices() {
-    return getFlowBuilderServicesBuilder() //
-        .setViewFactoryCreator(this.mvcViewFactoryCreator()) // Important!
-        .setValidator(this.localValidatorFactoryBean)
-        .build();
-  }
+    @Bean
+    public FlowBuilderServices flowBuilderServices() {
+        return getFlowBuilderServicesBuilder() //
+                .setViewFactoryCreator(this.mvcViewFactoryCreator()) // Important!
+                .setValidator(this.localValidatorFactoryBean)
+                .build();
+    }
 
-  // ----------------------------------------------------------
+    // ----------------------------------------------------------
 
-  @Bean
-  public FlowHandlerMapping flowHandlerMapping() {
-    FlowHandlerMapping handlerMapping = new FlowHandlerMapping();
-    handlerMapping.setOrder(-1);
-    handlerMapping.setFlowRegistry(this.flowRegistry());
-    return handlerMapping;
-  }
+    @Bean
+    public FlowHandlerMapping flowHandlerMapping() {
+        FlowHandlerMapping handlerMapping = new FlowHandlerMapping();
+        handlerMapping.setOrder(-1);
+        handlerMapping.setFlowRegistry(this.flowRegistry());
+        return handlerMapping;
+    }
 
-  @Bean
-  public FlowHandlerAdapter flowHandlerAdapter() {
-    FlowHandlerAdapter handlerAdapter = new FlowHandlerAdapter();
-    handlerAdapter.setFlowExecutor(this.flowExecutor());
-    handlerAdapter.setSaveOutputToFlashScopeOnRedirect(true);
-    return handlerAdapter;
-  }
+    @Bean
+    public FlowHandlerAdapter flowHandlerAdapter() {
+        FlowHandlerAdapter handlerAdapter = new FlowHandlerAdapter();
+        handlerAdapter.setFlowExecutor(this.flowExecutor());
+        handlerAdapter.setSaveOutputToFlashScopeOnRedirect(true);
+        return handlerAdapter;
+    }
 
-  @Bean
-  public ViewFactoryCreator mvcViewFactoryCreator() {
-    MvcViewFactoryCreator factoryCreator = new MvcViewFactoryCreator();
-    factoryCreator.setViewResolvers(Collections.singletonList(this.thymeleafViewResolver()));
-    factoryCreator.setUseSpringBeanBinding(true);
-    return factoryCreator;
-  }
+    @Bean
+    public ViewFactoryCreator mvcViewFactoryCreator() {
+        MvcViewFactoryCreator factoryCreator = new MvcViewFactoryCreator();
+        factoryCreator.setViewResolvers(Collections.singletonList(this.thymeleafViewResolver()));
+        factoryCreator.setUseSpringBeanBinding(true);
+        return factoryCreator;
+    }
 
-  @Bean
-  @Description("Thymeleaf AJAX view resolver for Spring WebFlow")
-  public AjaxThymeleafViewResolver thymeleafViewResolver() {
-    AjaxThymeleafViewResolver viewResolver = new AjaxThymeleafViewResolver();
-    viewResolver.setViewClass(FlowAjaxThymeleafView.class);
-    viewResolver.setTemplateEngine(this.templateEngine());
-    viewResolver.setCharacterEncoding("UTF-8");
-    return viewResolver;
-  }
+    @Bean
+    @Description("Thymeleaf AJAX view resolver for Spring WebFlow")
+    public AjaxThymeleafViewResolver thymeleafViewResolver() {
+        AjaxThymeleafViewResolver viewResolver = new AjaxThymeleafViewResolver();
+        viewResolver.setViewClass(FlowAjaxThymeleafView.class);
+        viewResolver.setTemplateEngine(this.templateEngine());
+        viewResolver.setCharacterEncoding("UTF-8");
+        return viewResolver;
+    }
 
-  @Bean
-  @Description("Thymeleaf template resolver serving HTML 5")
-  public ClassLoaderTemplateResolver templateResolver() {
-    ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-    templateResolver.setPrefix("templates/");
-    templateResolver.setCacheable(false);
-    templateResolver.setSuffix(".html");
-    templateResolver.setTemplateMode("HTML5");
-    templateResolver.setCharacterEncoding("UTF-8");
-    return templateResolver;
-  }
+    @Bean
+    @Description("Thymeleaf template resolver serving HTML 5")
+    public ClassLoaderTemplateResolver templateResolver() {
+        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+        templateResolver.setPrefix("templates/");
+        templateResolver.setCacheable(false);
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode("HTML5");
+        templateResolver.setCharacterEncoding("UTF-8");
+        return templateResolver;
+    }
 
-  @Bean
-  @Description("Thymeleaf template engine with Spring integration")
-  public SpringTemplateEngine templateEngine() {
-    SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-    templateEngine.setTemplateResolver(this.templateResolver());
-    return templateEngine;
-  }
+    @Bean
+    @Description("Thymeleaf template engine with Spring integration")
+    public SpringTemplateEngine templateEngine() {
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(this.templateResolver());
+        return templateEngine;
+    }
 }

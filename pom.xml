@@ -74,7 +74,11 @@
                             <include>src/main/java/**/*.java</include>
                             <include>src/test/java/**/*.java</include>
                         </includes>
-                        <googleJavaFormat /> <!-- has its own section below -->
+                        <palantirJavaFormat>
+                            <version>2.63.0</version>                     <!-- optional -->
+                            <style>PALANTIR</style>                       <!-- or AOSP/GOOGLE (optional) -->
+                            <formatJavadoc>false</formatJavadoc>          <!-- defaults to false (optional, requires at least Palantir 2.39.0) -->
+                        </palantirJavaFormat>
                         <importOrder /> <!-- standard import order -->
                         <removeUnusedImports /> <!-- self-explanatory -->
                         <formatAnnotations />  <!-- fixes formatting of type annotations, see below -->
