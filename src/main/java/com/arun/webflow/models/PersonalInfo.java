@@ -12,15 +12,20 @@ public class PersonalInfo implements Serializable {
 
     private byte[] imageContent;
 
-    @NotBlank private String username;
+    @NotBlank
+    private String username;
 
-    @NotBlank private String password;
+    @NotBlank
+    private String password;
 
-    @NotBlank private String confirmPassword;
+    @NotBlank
+    private String confirmPassword;
 
-    @NotBlank private String firstname;
+    @NotBlank
+    private String firstname;
 
-    @NotBlank private String lastname;
+    @NotBlank
+    private String lastname;
 
     public byte[] getImageContent() {
         return imageContent;

@@ -81,7 +81,7 @@
                         </palantirJavaFormat>
                         <importOrder /> <!-- standard import order -->
                         <removeUnusedImports /> <!-- self-explanatory -->
-                        <formatAnnotations />  <!-- fixes formatting of type annotations, see below -->
+<!--                        <formatAnnotations />  &lt;!&ndash; fixes formatting of type annotations, see below &ndash;&gt;-->
                     </java>
                 </configuration>
             </plugin>
