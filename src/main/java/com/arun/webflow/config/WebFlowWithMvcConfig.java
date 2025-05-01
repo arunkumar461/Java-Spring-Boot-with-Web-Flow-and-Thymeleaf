@@ -85,13 +85,13 @@ public class WebFlowWithMvcConfig extends AbstractFlowConfiguration {
     }
 
     @Bean
-    @Description("Thymeleaf template resolver serving HTML 5")
+    @Description("Thymeleaf template resolver serving HTML")
     public ClassLoaderTemplateResolver templateResolver() {
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setPrefix("templates/");
         templateResolver.setCacheable(false);
         templateResolver.setSuffix(".html");
-        templateResolver.setTemplateMode("HTML5");
+        templateResolver.setTemplateMode("HTML");
         templateResolver.setCharacterEncoding("UTF-8");
         return templateResolver;
     }
