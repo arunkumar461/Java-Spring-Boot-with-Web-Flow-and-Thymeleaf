@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>com.example.blog</groupId>
-    <artifactId>spring-boot-with-webflow-and-thymeleaf-configured</artifactId>
+    <artifactId>spring-boot-with-webflow-and-thymeleaf</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
