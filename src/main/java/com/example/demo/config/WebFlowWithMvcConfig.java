@@ -15,16 +15,17 @@ import org.springframework.webflow.executor.FlowExecutor;
 import org.springframework.webflow.mvc.builder.MvcViewFactoryCreator;
 import org.springframework.webflow.mvc.servlet.FlowHandlerAdapter;
 import org.springframework.webflow.mvc.servlet.FlowHandlerMapping;
-import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.webflow.view.AjaxThymeleafViewResolver;
-import org.thymeleaf.spring5.webflow.view.FlowAjaxThymeleafView;
+
+import org.thymeleaf.spring6.SpringTemplateEngine;
+import org.thymeleaf.spring6.webflow.view.AjaxThymeleafViewResolver;
+import org.thymeleaf.spring6.webflow.view.FlowAjaxThymeleafView;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 @Configuration
 public class WebFlowWithMvcConfig extends AbstractFlowConfiguration {
 
 	@Autowired
-	private LocalValidatorFactoryBean localValidatorFacotryBean;
+	private LocalValidatorFactoryBean localValidatorFactoryBean;
 
 	@Bean
 	public FlowDefinitionRegistry flowRegistry() {
@@ -45,7 +46,7 @@ public class WebFlowWithMvcConfig extends AbstractFlowConfiguration {
 	public FlowBuilderServices flowBuilderServices() {
 		return getFlowBuilderServicesBuilder() //
 				.setViewFactoryCreator(this.mvcViewFactoryCreator()) // Important!
-				.setValidator(this.localValidatorFacotryBean).build();
+				.setValidator(this.localValidatorFactoryBean).build();
 	}
 	// ----------------------------------------------------------
 
