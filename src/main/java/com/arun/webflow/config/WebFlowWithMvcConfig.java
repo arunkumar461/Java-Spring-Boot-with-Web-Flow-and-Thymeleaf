@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.arun.webflow.config;
 
 import java.util.Collections;
 

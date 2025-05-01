@@ -1,12 +1,12 @@
-package com.example.demo.handlers;
+package com.arun.webflow.handlers;
 
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 
-import com.example.demo.models.BillingInfo;
-import com.example.demo.models.PersonalInfo;
-import com.example.demo.models.RegisterModel;
+import com.arun.webflow.models.BillingInfo;
+import com.arun.webflow.models.PersonalInfo;
+import com.arun.webflow.models.RegisterModel;
 
 @Component
 public class RegisterHandler {
