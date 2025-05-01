@@ -2,9 +2,7 @@
 
 This project demonstrates how to use Spring Web Flow with Spring Boot 3 and Java 21, along with Thymeleaf for templating. It provides a working example of integrating Spring Web Flow into a modern Spring Boot application.
 
-Starter Spring Boot project with Spring Web Flow and Thymeleaf configured. I've been struggling with this one for quite some time until realized I've missed one line of code. 
-
-Well, I don't want you guys to waste time like I've done, so here you go :)
+Starter Spring Boot project with Spring Web Flow and Thymeleaf configured.
 
 ## Key Features
 - Spring Boot 3
