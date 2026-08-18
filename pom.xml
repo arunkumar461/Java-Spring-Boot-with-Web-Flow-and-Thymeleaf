@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.springframework.webflow</groupId>
             <artifactId>spring-webflow</artifactId>
-            <version>3.0.1</version>
+            <version>3.0.2</version>
         </dependency>
 
         <dependency>
